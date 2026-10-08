@@ -1,0 +1,71 @@
+﻿@model PAW.Models.DTO.NotificationDTO
+
+@{
+    ViewData["Title"] = "Edit Notification";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h2>Edit Notification</h2>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" method="post">
+
+                <input asp-for="Id"
+                       type="hidden" />
+
+                <div class="mb-3">
+                    <label asp-for="UserId"
+                           class="form-label">
+                        User ID
+                    </label>
+
+                    <input asp-for="UserId"
+                           class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Message"
+                           class="form-label">
+                        Message
+                    </label>
+
+                    <textarea asp-for="Message"
+                              class="form-control"
+                              rows="4"></textarea>
+                </div>
+
+                <div class="form-check mb-3">
+
+                    <input asp-for="IsRead"
+                           class="form-check-input" />
+
+                    <label asp-for="IsRead"
+                           class="form-check-label">
+                        Is Read
+                    </label>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-warning">
+                    Save Changes
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

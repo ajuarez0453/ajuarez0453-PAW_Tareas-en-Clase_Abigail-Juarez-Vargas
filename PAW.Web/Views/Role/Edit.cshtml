@@ -1,0 +1,50 @@
+﻿@model PAW.Models.DTO.RoleDTO
+
+@{
+    ViewData["Title"] = "Edit Role";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h2>Edit Role</h2>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" method="post">
+
+                <input asp-for="RoleId"
+                       type="hidden" />
+
+                <div class="mb-3">
+
+                    <label asp-for="RoleName"
+                           class="form-label">
+                        Role Name
+                    </label>
+
+                    <input asp-for="RoleName"
+                           class="form-control" />
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-warning">
+                    Save Changes
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

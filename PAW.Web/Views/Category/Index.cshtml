@@ -1,0 +1,319 @@
+﻿@model IEnumerable<PAW.Models.DTO.CategoryDTO>
+
+@{
+    ViewData["Title"] = "Category Page";
+
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h2>Categories</h2>
+
+        <a asp-action="Create"
+           class="btn btn-primary">
+
+            Add Category
+
+        </a>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-striped table-hover align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Category ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Modified By</th>
+                            <th>Last Modified</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var category in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @category.CategoryId
+                                    </td>
+
+                                    <td>
+                                        <strong>
+                                            @category.CategoryName
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        @category.Description
+                                    </td>
+
+                                    <td>
+                                        @category.ModifiedBy
+                                    </td>
+
+                                    <td>
+                                        @(category.LastModified?.ToString("yyyy-MM-dd HH:mm"))
+                                    </td>
+
+                                    <td class="text-center">
+
+                                        <div class="btn-group">
+
+                                            <a asp-action="Edit"
+                                               asp-route-id="@category.CategoryId"
+                                               class="btn btn-sm btn-warning">
+                                                Edit
+                                            </a>
+
+                                            <button type="button"
+                                                    class="btn btn-sm btn-info details-button"
+                                                    data-id="@category.CategoryId">
+                                                Details
+                                            </button>
+
+                                            <form asp-action="Delete"
+                                                  asp-route-id="@category.CategoryId"
+                                                  method="post"
+                                                  class="d-inline">
+
+                                                <button type="submit"
+                                                        class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('Are you sure you want to delete this category?');">
+                                                    Delete
+                                                </button>
+
+                                            </form>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6"
+                                    class="text-center">
+                                    No categories found.
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PAGINATION -->
+
+    @if (totalPages > 1)
+    {
+        <nav class="mt-4">
+
+            <ul class="pagination justify-content-center">
+
+                <!-- FIRST << -->
+
+                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="1">
+                        &laquo;&laquo;
+                    </a>
+                </li>
+
+                <!-- PREVIOUS < -->
+
+                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="@(currentPage - 1)">
+                        &laquo;
+                    </a>
+                </li>
+
+                <!-- ... BEFORE -->
+
+                @if (currentPage > 2)
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">
+                            ...
+                        </span>
+                    </li>
+                }
+
+                <!-- PAGE BEFORE -->
+
+                @if (currentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link"
+                           asp-action="Index"
+                           asp-route-page="@(currentPage - 1)">
+                            @(currentPage - 1)
+                        </a>
+                    </li>
+                }
+
+                <!-- CURRENT -->
+
+                <li class="page-item active">
+                    <span class="page-link">
+                        @currentPage
+                    </span>
+                </li>
+
+                <!-- PAGE AFTER -->
+
+                @if (currentPage < totalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link"
+                           asp-action="Index"
+                           asp-route-page="@(currentPage + 1)">
+                            @(currentPage + 1)
+                        </a>
+                    </li>
+                }
+
+                <!-- ... AFTER -->
+
+                @if (currentPage < totalPages - 1)
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">
+                            ...
+                        </span>
+                    </li>
+                }
+
+                <!-- NEXT > -->
+
+                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="@(currentPage + 1)">
+                        &raquo;
+                    </a>
+                </li>
+
+                <!-- LAST >> -->
+
+                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="@totalPages">
+                        &raquo;&raquo;
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+    }
+
+</div>
+
+
+<!-- DETAILS MODAL -->
+
+<div class="modal fade"
+     id="detailsModal"
+     tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Category Details
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div id="detailsContent"
+                 class="modal-body">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <script>
+
+        document.querySelectorAll(".details-button")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    async function () {
+
+                        const id = this.dataset.id;
+
+                        const response =
+                            await fetch(
+                                `/Category/Details/${id}`
+                            );
+
+                        const html =
+                            await response.text();
+
+                        document.getElementById(
+                            "detailsContent"
+                        ).innerHTML = html;
+
+                        const modal =
+                            new bootstrap.Modal(
+                                document.getElementById(
+                                    "detailsModal"
+                                )
+                            );
+
+                        modal.show();
+                    }
+                );
+
+            });
+
+    </script>
+
+}

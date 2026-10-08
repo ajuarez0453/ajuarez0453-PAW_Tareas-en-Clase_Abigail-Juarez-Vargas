@@ -1,0 +1,64 @@
+﻿@model PAW.Models.DTO.ComponentDTO
+
+@{
+    ViewData["Title"] = "Add Component";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h2>Add Component</h2>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create" method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger">
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Name"
+                           class="form-label">
+                        Name
+                    </label>
+
+                    <input asp-for="Name"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Content"
+                           class="form-label">
+                        Content
+                    </label>
+
+                    <textarea asp-for="Content"
+                              class="form-control"
+                              rows="4"></textarea>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Save
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

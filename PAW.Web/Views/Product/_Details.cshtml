@@ -1,0 +1,263 @@
+@model PAW.Models.DTO.ProductDetailsDTO
+
+
+<div class="container-fluid">
+
+
+    <!-- PRODUCT -->
+
+    <h5>Product</h5>
+
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-4">
+            Product ID
+        </dt>
+
+        <dd class="col-sm-8">
+            @Model.Product.ProductId
+        </dd>
+
+
+        <dt class="col-sm-4">
+            Name
+        </dt>
+
+        <dd class="col-sm-8">
+            @Model.Product.Name
+        </dd>
+
+
+        <dt class="col-sm-4">
+            Description
+        </dt>
+
+        <dd class="col-sm-8">
+            @Model.Product.Description
+        </dd>
+
+
+        <dt class="col-sm-4">
+            Rating
+        </dt>
+
+        <dd class="col-sm-8">
+            @Model.Product.Rating
+        </dd>
+
+
+        <dt class="col-sm-4">
+            Created By
+        </dt>
+
+        <dd class="col-sm-8">
+            @Model.Product.CreatedBy
+        </dd>
+
+
+        <dt class="col-sm-4">
+            Modified By
+        </dt>
+
+        <dd class="col-sm-8">
+            @Model.Product.ModifiedBy
+        </dd>
+
+
+        <dt class="col-sm-4">
+            Last Modified
+        </dt>
+
+        <dd class="col-sm-8">
+            @(Model.Product.LastModified?.ToString("yyyy-MM-dd HH:mm"))
+        </dd>
+
+    </dl>
+
+
+
+    <!-- CATEGORY -->
+
+    <h5 class="mt-4">
+        Category
+    </h5>
+
+    <hr />
+
+    @if (Model.Category != null)
+    {
+        <dl class="row">
+
+            <dt class="col-sm-4">
+                Category ID
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Category.CategoryId
+            </dd>
+
+
+            <dt class="col-sm-4">
+                Name
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Category.CategoryName
+            </dd>
+
+
+            <dt class="col-sm-4">
+                Description
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Category.Description
+            </dd>
+
+        </dl>
+    }
+    else
+    {
+        <p class="text-muted">
+            No category associated.
+        </p>
+    }
+
+
+
+    <!-- INVENTORY -->
+
+    <h5 class="mt-4">
+        Inventory
+    </h5>
+
+    <hr />
+
+    @if (Model.Inventory != null)
+    {
+        <dl class="row">
+
+            <dt class="col-sm-4">
+                Inventory ID
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Inventory.InventoryId
+            </dd>
+
+
+            <dt class="col-sm-4">
+                Unit Price
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Inventory.UnitPrice
+            </dd>
+
+
+            <dt class="col-sm-4">
+                Units In Stock
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Inventory.UnitsInStock
+            </dd>
+
+
+            <dt class="col-sm-4">
+                Last Updated
+            </dt>
+
+            <dd class="col-sm-8">
+                @(Model.Inventory.LastUpdated?.ToString("yyyy-MM-dd HH:mm"))
+            </dd>
+
+        </dl>
+    }
+    else
+    {
+        <p class="text-muted">
+            No inventory associated.
+        </p>
+    }
+
+
+
+    <!-- SUPPLIER -->
+
+    <h5 class="mt-4">
+        Supplier
+    </h5>
+
+    <hr />
+
+    @if (Model.Supplier != null)
+    {
+        <dl class="row">
+
+            <dt class="col-sm-4">
+                Supplier ID
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Supplier.SupplierId
+            </dd>
+
+
+            <dt class="col-sm-4">
+                Supplier Name
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Supplier.SupplierName
+            </dd>
+
+
+            <dt class="col-sm-4">
+                Contact Name
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Supplier.ContactName
+            </dd>
+
+
+            <dt class="col-sm-4">
+                Phone
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Supplier.Phone
+            </dd>
+
+
+            <dt class="col-sm-4">
+                City
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Supplier.City
+            </dd>
+
+
+            <dt class="col-sm-4">
+                Country
+            </dt>
+
+            <dd class="col-sm-8">
+                @Model.Supplier.Country
+            </dd>
+
+        </dl>
+    }
+    else
+    {
+        <p class="text-muted">
+            No supplier associated.
+        </p>
+    }
+
+
+</div>

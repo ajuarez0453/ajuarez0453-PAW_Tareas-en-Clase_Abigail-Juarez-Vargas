@@ -1,0 +1,136 @@
+@model PAW.Models.DTO.ProductDTO
+
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h2>Edit Product</h2>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit"
+                  method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger">
+                </div>
+
+
+                <input asp-for="ProductId"
+                       type="hidden" />
+
+
+                <div class="mb-3">
+
+                    <label asp-for="Name"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="Name"
+                           class="form-control" />
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label asp-for="Description"
+                           class="form-label">
+                    </label>
+
+                    <textarea asp-for="Description"
+                              class="form-control"
+                              rows="3">
+                    </textarea>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label asp-for="Rating"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="Rating"
+                           class="form-control" />
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label asp-for="InventoryId"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="InventoryId"
+                           class="form-control" />
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label asp-for="SupplierId"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="SupplierId"
+                           class="form-control" />
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label asp-for="CategoryId"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="CategoryId"
+                           class="form-control" />
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label asp-for="ModifiedBy"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="ModifiedBy"
+                           class="form-control" />
+
+                </div>
+
+
+                <button type="submit"
+                        class="btn btn-warning">
+
+                    Save Changes
+
+                </button>
+
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
