@@ -1,22 +1,114 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Tarjeta flotante de tipo de cambio */
+.exchange-rate-widget {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    width: 270px;
+    z-index: 1030;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Encabezado */
+.exchange-rate-header {
+    background: #17365d;
+    color: #ffffff;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.exchange-rate-source {
+    font-size: 10px;
+    opacity: 0.8;
+    font-weight: normal;
+}
+
+/* Contenido */
+.exchange-rate-content {
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #475569;
+}
+
+.exchange-rate-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #edf0f3;
+}
+
+    .exchange-rate-row:last-child {
+        border-bottom: none;
+    }
+
+.exchange-rate-label {
+    color: #64748b;
+}
+
+.exchange-rate-value {
+    color: #17365d;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Fecha */
+.exchange-rate-date {
+    padding: 8px 14px;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* Evita tapar el contenido en pantallas grandes */
+@media (min-width: 1200px) {
+    body > .container {
+        padding-right: 290px;
+        max-width: 100%;
+    }
+}
+
+/* Adaptacion para pantallas pequenas */
+@media (max-width: 767px) {
+    .exchange-rate-widget {
+        position: static;
+        width: auto;
+        margin: 12px 15px 20px;
+    }
 }
